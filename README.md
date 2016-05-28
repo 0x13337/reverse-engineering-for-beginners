@@ -12,7 +12,7 @@
 
 Dennis Yurichev在感谢列表上antiy公司也有一份Chinese的翻译版本，但是我没找到，如果有小伙伴知道的麻烦告诉我一声，谢谢: )
 
-![](http://static.wooyun.org/upload/image/201605/2016052513120168158.png)
+![](acorn.png)
 
 最后，我目前看过的逆向书籍不多，但是对比一下国内看雪社区的《加密与解密》，《reverse engineering for beginners》更适合作为逆向入门书籍，而且里面覆盖的范围更广，包括了x86/x64，arm两三种CPU的指令集，而且囊括了Linux和Windows的OS hack等内容，各种逆向工具也都介绍了一番。所以逆向方面我挺推荐这本书作为入门读物的。
 

@@ -50,21 +50,21 @@ _f_signed   PROC
         mov     eax, DWORD PTR _a$[ebp]
         cmp     eax, DWORD PTR _b$[ebp]
         jle     SHORT $LN3@f_signed
-        push    OFFSET $SG737       ; ’a>b’
+        push    OFFSET $SG737       ; "a>b"
         call    _printf
         add     esp, 4
 $LN3@f_signed:
         mov     ecx, DWORD PTR _a$[ebp]
         cmp     ecx, DWORD PTR _b$[ebp]
         jne     SHORT $LN2@f_signed
-        push    OFFSET $SG739       ; ’a==b’
+        push    OFFSET $SG739       ; "a==b"
         call    _printf
         add     esp, 4
 $LN2@f_signed:
         mov     edx, DWORD PTR _a$[ebp]
         cmp     edx, DWORD PTR _b$[ebp]
         jge     SHORT $LN4@f_signed
-        push    OFFSET $SG741       ; ’a<b’
+        push    OFFSET $SG741       ; "a<b"
         call    _printf
         add     esp, 4
         $LN4@f_signed:
@@ -88,21 +88,21 @@ _f_unsigned     PROC
         mov     eax, DWORD PTR _a$[ebp]
         cmp     eax, DWORD PTR _b$[ebp]
         jbe     SHORT $LN3@f_unsigned
-        push    OFFSET $SG2761 ; ’a>b’
+        push    OFFSET $SG2761 ; "a>b"
         call    _printf
         add     esp, 4
 $LN3@f_unsigned:
         mov     ecx, DWORD PTR _a$[ebp]
         cmp     ecx, DWORD PTR _b$[ebp]
         jne     SHORT $LN2@f_unsigned
-        push    OFFSET $SG2763 ; ’a==b’
+        push    OFFSET $SG2763 ; "a==b"
         call    _printf
         add     esp, 4
 $LN2@f_unsigned:
         mov     edx, DWORD PTR _a$[ebp]
         cmp     edx, DWORD PTR _b$[ebp]
         jae     SHORT $LN4@f_unsigned
-        push    OFFSET $SG2765 ; ’a<b’
+        push    OFFSET $SG2765 ; "a<b"
         call    _printf
         add     esp, 4
 $LN4@f_unsigned:
@@ -149,15 +149,15 @@ _main   ENDP
 
 第三个条件跳转：fig. 10.3.我们可以发现14当CF=0 (carry flag)时，JNB将被触发。在该例中条件不为真，所以第三个printf()将被执行。
 
-![](1.png)
+![](Chapter-10/1.png)
 
 Figure 10.1: OllyDbg: f_unsigned(): 第一个条件跳转
 
-![](2.png)
+![](Chapter-10/2.png)
 
 Figure 10.2: OllyDbg: f_unsigned(): 第二个条件跳转
 
-![](3.png)
+![](Chapter-10/3.png)
 
 Figure 10.3: OllyDbg: f_unsigned(): 第三个条件跳转
 
@@ -171,15 +171,15 @@ Figure 10.3: OllyDbg: f_unsigned(): 第三个条件跳转
 
 第三个条件跳转将不会被触发，因为仅有SF=OF，该例中不为真: fig. 10.6.
 
-![](4.png)
+![](Chapter-10/4.png)
 
 Figure 10.4: OllyDbg: f_signed(): 第一个条件跳转
 
-![](5.png)
+![](Chapter-10/5.png)
 
 Figure 10.5: OllyDbg: f_signed(): 第二个条件跳转
 
-![](6.png)
+![](Chapter-10/6.png)
 
 Figure 10.6: OllyDbg: f_signed(): 第三个条件跳转
 
@@ -205,11 +205,11 @@ Figure 10.6: OllyDbg: f_signed(): 第三个条件跳转
 
 如果忘了这些跳转，printf()可能会被多次调用，这种行为可能是我们不需要的。
 
-![](7.png)
+![](Chapter-10/7.png)
 
 Figure 10.7: Hiew: f_unsigned() 函数
 
-![](8.png)
+![](Chapter-10/8.png)
 
 Figure 10.8: Hiew:我们修改 f_unsigned() 函数
 
@@ -301,18 +301,15 @@ Listing 10.6: Optimizing Keil + ARM mode
 .text:000000BC 01 40 A0 E1              MOV     R4, R1
 .text:000000C0 04 00 50 E1              CMP     R0, R4
 .text:000000C4 00 50 A0 E1              MOV     R5, R0
-.text:000000C8 1A 0E 8F C2              ADRGT   R0, aAB ; "a>b
-"
+.text:000000C8 1A 0E 8F C2              ADRGT   R0, aAB ; "a>b"
 .text:000000CC A1 18 00 CB              BLGT    __2printf
 .text:000000D0 04 00 55 E1              CMP     R5, R4
-.text:000000D4 67 0F 8F 02              ADREQ   R0, aAB_0 ; "a==b
-"
+.text:000000D4 67 0F 8F 02              ADREQ   R0, aAB_0 ; "a==b"
 .text:000000D8 9E 18 00 0B              BLEQ    __2printf
 .text:000000DC 04 00 55 E1              CMP     R5, R4
 .text:000000E0 70 80 BD A8              LDMGEFD SP!, {R4-R6,PC}
 .text:000000E4 70 40 BD E8              LDMFD   SP!, {R4-R6,LR}
-.text:000000E8 19 0E 8F E2              ADR     R0, aAB_1 ; "a<b
-"
+.text:000000E8 19 0E 8F E2              ADR     R0, aAB_1 ; "a<b"
 .text:000000EC 99 18 00 EA              B       __2printf
 .text:000000EC              ; End of function f_signed
 ```
@@ -327,7 +324,7 @@ ADRGT指令就像和ADR一样，只是该指令前面为CMP指令，并且只有
 
 然后我们看ADREQ和BLEQ，这些指令动作和ADR及BL一样，只有当两个操作数对比后相等时才会被执行。这些指令前面是CMP（因为printf()调用可能会修改状态标识）。 然后我们看LDMGEFD，该指令行为和LDMFD指令一样1，仅仅当第一个值大于等于另一个值时（Greater Than），指令才会被执行。
 
-“LDMGEFD SP!, {R4-R6,PC}”恢复寄存器并返回，只是当a>=b时才被触发，这样之后函数才执行完成。但是如果a<b，触发条件不成立是将执行下一条指令LDMFD SP!, {R4-R6,LR}，该指令保存R4-R6寄存器，使用LR而不是PC，函数并不返回。最后两条指令是执行printf()（5.3.2）。
+“LDMGEFD SP!, {R4-R6,PC}”恢复寄存器并返回，只是当a>=b时才被触发，这样之后函数才执行完成。但是如果 a&lt;b，触发条件不成立是将执行下一条指令LDMFD SP!, {R4-R6,LR}，该指令保存R4-R6寄存器，使用LR而不是PC，函数并不返回。最后两条指令是执行printf()（5.3.2）。
 
 f_unsigned与此一样只是使用对应的指令为ADRHI, BLHI及LDMCSFD，判断谓词（HI = Unsigned higher, CS = Carry Set (greater than or equal)）请类比之前的说明，另外就是函数内部使用无符号数值。
 
@@ -367,22 +364,19 @@ Listing 10.8: Optimizing Keil + thumb mode
 .text:00000076 05 00                MOVS    R5, R0
 .text:00000078 A0 42                CMP     R0, R4
 .text:0000007A 02 DD                BLE     loc_82
-.text:0000007C A4 A0                ADR     R0, aAB         ; "a>b
-"
+.text:0000007C A4 A0                ADR     R0, aAB         ; "a>b"
 .text:0000007E 06 F0 B7 F8          BL      __2printf
 .text:00000082
 .text:00000082      loc_82                      ; CODE XREF: f_signed+8
 .text:00000082 A5 42                CMP     R5, R4
 .text:00000084 02 D1                BNE     loc_8C
-.text:00000086 A4 A0                ADR     R0, aAB_0   ; "a==b
-"
+.text:00000086 A4 A0                ADR     R0, aAB_0   ; "a==b"
 .text:00000088 06 F0 B2 F8          BL      __2printf
 .text:0000008C
 .text:0000008C      loc_8C                      ; CODE XREF: f_signed+12
 .text:0000008C A5 42                CMP     R5, R4
 .text:0000008E 02 DA                BGE     locret_96
-.text:00000090 A3 A0                ADR     R0, aAB_1   ; "a<b
-"
+.text:00000090 A3 A0                ADR     R0, aAB_1   ; "a<b"
 .text:00000092 06 F0 AD F8          BL      __2printf
 .text:00000096
 .text:00000096      locret_96                   ; CODE XREF: f_signed+1C

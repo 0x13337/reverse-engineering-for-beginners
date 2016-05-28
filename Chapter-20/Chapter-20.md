@@ -154,15 +154,15 @@ Listing 20.2: MSVCR80.DLL
 
 第二次调用comp()—当前比较的值不相同：fig203。
 
-![](1.png)
+![](Chapter-20/1.png)
 
 Figure 20.1: OllyDbg: first call of comp()
 
-![](2.png)
+![](Chapter-20/2.png)
 
 Figure 20.2: OllyDbg: the code in qsort() right a_er comp() call
 
-![](3.png)
+![](Chapter-20/3.png)
 
 Figure 20.3: OllyDbg: second call of comp()
 
@@ -253,7 +253,7 @@ IDA给出了函数名字(PtFuncCompare)—IDA认为该函数指针被传递给qs
 
 0x401010 和 0x401012之间的指令从没有被执行：事实上comp()从来不返回0，因为没有相等的元素。
 
-![](4.png)
+![](Chapter-20/4.png)
 
 Figure 20.4: tracer and IDA. N.B.: some values are cutted at right
 

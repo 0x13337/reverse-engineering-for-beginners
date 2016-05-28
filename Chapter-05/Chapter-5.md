@@ -69,7 +69,7 @@ add esp, 24
 
 栈中的数据又在哪？那么看一下调试器右下方的窗口:
 
-![](1.png)
+![](Chapter-05/1.png)
 
 图 5.1
 
@@ -81,7 +81,7 @@ add esp, 24
 
 然后我们就可以看到输出
 
-![](2.png)
+![](Chapter-05/2.png)
 
 图5.2 执行printf()函数
 
@@ -99,19 +99,19 @@ ESP改变了，但是值还是在栈中！当然 没有必要用0或者别的数
 
 因为在栈指针寄存器之上的数据都是无用的。
 
-![](3.png)
+![](Chapter-05/3.png)
 
 图5.3 OllyDbg:main()初始处
 
-![](4.png)
+![](Chapter-05/4.png)
 
 图5.4 OllyDbg:printf()执行时
 
-![](5.png)
+![](Chapter-05/5.png)
 
 图5.5 Ollydbg:printf()执行后
 
-![](6.png)
+![](Chapter-06/6.png)
 
 图5.6 OllyDbg ADD ESP, 10执行完后
 

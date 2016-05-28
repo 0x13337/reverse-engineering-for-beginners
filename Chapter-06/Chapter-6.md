@@ -132,7 +132,7 @@ EBP的值减去4，结果放在EAX寄存器中。接着EAX寄存器的值被压�
 
 可以右击寄存器窗口的EAX，再点击"堆栈窗口中跟随"。这个地址会在堆栈窗口中显示。观察，这是局部栈中的一个变量。我在图中用红色箭头标出。这里是一些无用数据（0x77D478）。PUSH指令将会把这个栈元素的地址压入栈中。然后按F8直到scanf()函数执行完。在scanf()执行时，我们要在命令行窗口中输入，例如输入123。
 
-![](1.png)
+![](Chapter-06/1.png)
 
 图6.1 命令行输出
 
@@ -140,15 +140,15 @@ scanf()在这里执行。图6.3。scanf()在EAX中返回1，这意味着成功�
 
 接下来，这个值从栈中复制到ECX寄存器中，然后传递给printf()。图6.4
 
-![](2.png)
+![](Chapter-06/2.png)
 
 图6.2 OllyDbg：计算局部变量的地址
 
-![](3.png)
+![](Chapter-06/3.png)
 
 图6.3：OllyDbg：scanf()执行
 
-![](4.png)
+![](Chapter-06/4.png)
 
 图6.4：OllyDbg：准备把值传递给printf()
 
@@ -354,11 +354,11 @@ _x      DD      0aH
 
 X变量地址是0xDC3390.在OllyDbg中我们看进程内存映射(Alt-M)，然后发现这个地在PE文件.data结构处。见表6.6
 
-![](5.png)
+![](Chapter-06/5.png)
 
 表6.5 OllyDbg: scanf()执行后
 
-![](6.png)
+![](Chapter-06/6.png)
 
 表6.6: OllyDbg 进程内存映射
 
@@ -637,11 +637,11 @@ JNE根据CMP的结果判断跳至哪，JNE表示(jump if Not Equal)
 
 这个非常的有用。可以这么说，逆向工程师很重要的一点就是缩小他所有的信息。
 
-![](7.png)
+![](Chapter-06/7.png)
 
 图6.7: IDA 图形模式
 
-![](8.png)
+![](Chapter-06/8.png)
 
 图6.8: Graph mode in IDA with 3 nodes folded
 
@@ -661,17 +661,17 @@ JNE根据CMP的结果判断跳至哪，JNE表示(jump if Not Equal)
 
 按下F9我们可以在窗口中看到:
 
-![](9.png)
+![](Chapter-06/9.png)
 
 图6.9
 
 实际上，5035128是栈上一个数据(0x4CD478)的十进制表示!
 
-![](10.png)
+![](Chapter-06/10.png)
 
 图6.10
 
-![](11.png)
+![](Chapter-06/11.png)
 
 图6.11
 
@@ -689,11 +689,11 @@ JNE根据CMP的结果判断跳至哪，JNE表示(jump if Not Equal)
 
 另外我们也可以这样做：替换第一个字节为EB，这样就不修改第二处（jump offset），这样就会无条件跳转，不管我们输入什么，错误信息都可以打印出来了。
 
-![](13.png)
+![](Chapter-06/13.png)
 
 图6.12:main()函数
 
-![](14.png)
+![](Chapter-06/14.png)
 
 图6.13:Hiew 用两个NOP替换JNZ
 

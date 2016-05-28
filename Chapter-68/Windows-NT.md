@@ -391,7 +391,7 @@ OllyDbg会用下划线标识哪些使用了重定位表。相关例子请查看�
 
 因为术语混乱，导入表是一个比较令人困惑的地方。让我们尝试一下整理这些信息。
 
-![Figure 68.1: A scheme that unites all PE-file structures related to imports](img/Figure_68.1_A_scheme_that_unites_all_PE-file_structures_related_to_imports.jpg)
+![Figure 68.1: A scheme that unites all PE-file structures related to imports](Chapter-68/img/Figure_68.1_A_scheme_that_unites_all_PE-file_structures_related_to_imports.jpg)
 
 Figure 68.1: A scheme that unites all PE-file structures related to imports
 
@@ -479,19 +479,19 @@ jmp mscoree.dll!_CorExeMain
 
 在异常处理链的结尾处有一个标准的处理程序，它显示一个对话框用于通知用户进程崩溃，然后把一些崩溃时CPU的状态信息，收集起来并将其发送给微软开发商。
 
-![Figure 68.2: Windows XP](img/Figure_68.2_Windows_XP.jpg)
+![Figure 68.2: Windows XP](Chapter-68/img/Figure_68.2_Windows_XP.jpg)
 
 Figure 68.2: Windows XP
 
-![Figure 68.3: Windows XP](img/Figure_68.3_Windows_XP.jpg)
+![Figure 68.3: Windows XP](Chapter-68/img/Figure_68.3_Windows_XP.jpg)
 
 Figure 68.3: Windows XP
 
-![Figure 68.4: Windows 7](img/Figure_68.4_Windows_7.jpg)
+![Figure 68.4: Windows 7](Chapter-68/img/Figure_68.4_Windows_7.jpg)
 
 Figure 68.4: Windows 7
 
-![Figure 68.5: Windows 8.1](img/Figure_68.5_Windows_8.1.jpg)
+![Figure 68.5: Windows 8.1](Chapter-68/img/Figure_68.5_Windows_8.1.jpg)
 
 Figure 68.5: Windows 8.1
 
@@ -581,7 +581,7 @@ Listing 68.1: MSVC/VC/crt/src/exsup.inc
 
 每个结点的handler字段指向一个异常处理程序，每个结点的prev字段指向在栈中的上一个结点。最后一个结点的prev指向0xFFFFFFFF(-1)。
 
-![Figure 68.5: Windows 8.1](img/exception.jpg)
+![Figure 68.5: Windows 8.1](Chapter-68/img/exception.jpg)
 
 我们的处理程序安装后，我们调用RaiseException()。这是一个用户异常。处理程序检查异常代码，如果异常代码是0xE1223344，它返回ExceptionContinueExecution。这意味着处理程序修复了CPU的状态（通常是EIP/ESP寄存器），操作系统可以恢复运行。如果你稍微修改一下代码，处理程序返回ExceptionContinueSearch，那么操作系统将调用下一个处理程序，如果没有找到处理程序（因为没人捕获该异常），你会看到标准的Windows进程崩溃对话框。
 
@@ -757,7 +757,7 @@ SEH3有一个_except_handler3处理函数，而且扩展了_EXCEPTION_REGISTRATI
 
 scope table是一个表，包含了指向filter和handler code的块和每个try/except嵌套。
 
-![scopetable](img/seh3.jpg)
+![scopetable](Chapter-68/img/seh3.jpg)
 
 再者，操作系统只关心prev/handle字段。_except_handler3函数的工作是读取其他字段和scope table，并决定由哪些处理程序来执行。
 
@@ -1144,7 +1144,7 @@ scopetable entry[0]. previous try level=-2, filter=0x771f74d0 (ntdll.dll!___safe
 
 SEH4的previous try level初始化值是-2而不是-1。
 
-![seh4](img/seh4.jpg)
+![seh4](Chapter-68/img/seh4.jpg)
 
 这里有两个使用MSVC编译的SEH4例子：
 

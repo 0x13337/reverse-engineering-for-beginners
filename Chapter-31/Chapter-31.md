@@ -451,15 +451,15 @@ ret 0
 
 所以，这就是他的内存暑促后：（基类对象）
 
-![](1.png)
+![](Chapter-31/1.png)
 
 继承的对象 Box：
 
-![](2.png)
+![](Chapter-31/2.png)
 
 Sphere:
 
-![](3.png)
+![](Chapter-31/3.png)
 
 让我们看看main()函数体：
 
@@ -546,7 +546,7 @@ ret 0
 
 这就是类的内存分布：
 
-![](4.png)
+![](Chapter-31/4.png)
 
 所有域都不允许其他类的访问，但是，我们知道这个存放方式之后是否可以修改这些域？ 所以我加了hack_oop_encapsulation()函数，假设他有这个代码，当然我们没有编译：
 
@@ -724,15 +724,15 @@ ret 0
 
 Box：
 
-![](5.png)
+![](Chapter-31/5.png)
 
 Solid_object：
 
-![](6.png)
+![](Chapter-31/6.png)
 
 可以说，solid_box的类内存空间就是它们的组合：
 
-![](7.png)
+![](Chapter-31/7.png)
 
 Box::get_volume()和solid_object::get_density()函数的代码如下：
 

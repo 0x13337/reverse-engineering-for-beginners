@@ -144,17 +144,17 @@ BX          LR
 
 下面展示的是怎样用乘法来优化除法，其中借助了2^n的阶乘
 
-![](1.jpg)
+![](Chapter-14/1.jpg)
 
 M是一个magic系数
 
 M的计算过程
 
-![](2.jpg)
+![](Chapter-14/2.jpg)
 
 因此这些代码片段通常具有这样的形式
 
-![](3.jpg)
+![](Chapter-14/3.jpg)
 
 n可以是任意数，可能是32（那么这样运算结果的高位部分从EX或者RDX寄存器中获取），可能是31（这种情况下乘法结果的高位部分结果右移）
 
@@ -221,7 +221,7 @@ add     eax, edx
 
 我们得到的除法是
 
-![](4.jpg)
+![](Chapter-14/4.jpg)
 
 举个例子
 
@@ -238,7 +238,7 @@ add     eax, edx
 
 即
 
-![](5.jpg)
+![](Chapter-14/5.jpg)
 
 比32位的数字大，为了方便，于是我们使用用Wolfram Mathematica软件。
 
@@ -290,11 +290,11 @@ shr     eax, 1Fh
 
 更加简洁
 
-![](6.jpg)
+![](Chapter-14/6.jpg)
 
 在这个例子中
 
-![](7.jpg)
+![](Chapter-14/7.jpg)
 
 再用一次Wolfram Mathematica
 
